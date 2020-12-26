@@ -1,0 +1,1 @@
+from parser.selenium_parsing import selenium_parsing

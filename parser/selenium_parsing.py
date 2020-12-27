@@ -14,7 +14,7 @@ def selenium_parsing():
     Основная функция парсинга, в случае
     :return:
     """
-    web_driver = webdriver.Chrome()
+    web_driver = webdriver.Chrome('chromedriver.exe')
     try:
         logging.info('Старт сессии парсинга')
         web_driver.get(parsing_url)

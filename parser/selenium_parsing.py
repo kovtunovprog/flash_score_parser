@@ -14,7 +14,7 @@ def selenium_parsing():
     Основная функция парсинга, в случае
     :return:
     """
-    web_driver = webdriver.Chrome('chromedriver.exe')
+    web_driver = webdriver.Chrome()
     try:
         logging.info('Старт сессии парсинга')
         web_driver.get(parsing_url)
@@ -46,11 +46,11 @@ def selenium_parsing():
                 logging.info('Переходим к H2H')
 
                 time.sleep(1)
-                command_last_match_period_result_1 = parsing_command_last_matches(web_driver, 1, period)
+                command_last_match_period_result_1 = parsing_command_last_matches(web_driver, 1, period_num)
                 logging.info('Переходим на страницу подробной информации о последней игре команды 1')
                 web_driver.back()
 
-                command_last_match_period_result_2 = parsing_command_last_matches(web_driver, 1, period)
+                command_last_match_period_result_2 = parsing_command_last_matches(web_driver, 1, period_num)
                 logging.info('Переходим на страницу подробной информации о последней игре команды 2')
                 web_driver.back()
                 logging.info('Возвращаемся к H2H')

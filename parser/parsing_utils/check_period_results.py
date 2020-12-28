@@ -13,10 +13,13 @@ def check_period_results(element):
     stage = element.find_element_by_class_name('event__stage--block')
     logging.info('LIVE: Проверка результатов в периоде конкретного матча')
     if 'период' in str(stage.text):
+        period_str = stage.text[0]
         minutes = stage.text[10:]
-        period_1_condition = 8 < int(minutes) < 12
-        period_2_condition = 28 < int(minutes) < 32
-        period_3_condition = 48 < int(minutes) < 52
+        period_1_condition = str(period_str) == '1'
+        period_2_condition = str(period_str) == '2'
+        period_3_condition = str(period_str) == '3'
+
+        minutes_condition = 8 < int(minutes) < 12
 
         if not period_1_condition and not period_2_condition and not period_3_condition:
             return False
@@ -26,6 +29,8 @@ def check_period_results(element):
             period = 2
         if period_3_condition:
             period = 3
+        if not minutes_condition:
+            return False
     else:
         return False
 
